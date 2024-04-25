@@ -10,10 +10,10 @@ using RestSharp;
 
 namespace RecipeSearcher
 {
-    internal class FoodDB
+    public class FoodDB
     {
 
-        public List<Category> GetCategories()
+        public static List<Category> GetCategories()
         {
             var client = new RestClient("https://www.themealdb.com/api/json/v1/1/");
             var requestList = new RestRequest("categories.php");

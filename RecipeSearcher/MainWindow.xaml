@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <ListView Margin="10" Name="lvDataBinding">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding idCategory}" FontSize="25"/>
+                        <TextBlock Text=". " FontSize="25"/>
+                        <TextBlock Text="{Binding strCategory}" FontWeight="Bold" FontSize="25"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Window>

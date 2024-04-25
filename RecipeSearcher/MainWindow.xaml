@@ -13,7 +13,7 @@
                     <WrapPanel>
                         <TextBlock Text="{Binding idCategory}" FontSize="25"/>
                         <TextBlock Text=". " FontSize="25"/>
-                        <TextBlock Text="{Binding strCategory}" FontWeight="Bold" FontSize="25"/>
+                        <Button Content="{Binding strCategory}" FontWeight="Bold" FontSize="25" Click="CategoryClick" Tag="{Binding strCategory}"/>
                     </WrapPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

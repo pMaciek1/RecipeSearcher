@@ -24,5 +24,10 @@ namespace RecipeSearcher
             InitializeComponent();
             lvDataBinding.ItemsSource = FoodDB.GetCategories();
         }
+        private void CategoryClick(object sender, RoutedEventArgs e)
+        {
+            string category = ((Button)sender).Tag as String;
+            MessageBox.Show(category);
+        }
     }
 }

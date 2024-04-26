@@ -5,9 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RecipeSearcher"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <ListView Margin="10" Name="lvDataBinding">
+        Title="Very cool recipe searcher" Height="800" Width="1440">
+    <Grid Background="AliceBlue">
+        <ListView Margin="10" Name="lvDataBindingCategories" Background="AliceBlue" BorderThickness="0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Background="LightGray" Margin="10">
+                                    <ContentPresenter Margin="5" />
+                                </Border>
+                                
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -18,5 +35,38 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        <ListView Margin="10" Name="lvDataBindingMeals" Visibility="Hidden" Background="AliceBlue" BorderThickness="0">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                <Border BorderBrush="Black" BorderThickness="2" CornerRadius="10" Background="LightGray" Margin="10">
+                                    <ContentPresenter Margin="5" />
+                                </Border>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding idMeal}" FontSize="25" VerticalAlignment="Center"/>
+                            <TextBlock Text=". " FontSize="25" VerticalAlignment="Center"/>
+                            <Button Content="{Binding strMeal}" FontWeight="Bold" FontSize="25" Click="MealClick" Tag="{Binding strMeal}" Height="50" />
+                            <Border BorderThickness="2" BorderBrush="Black" CornerRadius="5" Margin="10,5,10,5">
+                                <Image Source="{Binding strMealThumb}" Width="150" />
+                            </Border>
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
+    
 </Window>
+

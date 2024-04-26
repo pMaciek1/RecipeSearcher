@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using System.Web;
 using Newtonsoft.Json;
 using RestSharp;
 
@@ -27,6 +28,21 @@ namespace RecipeSearcher
                 return categories;
             }
             return categories;
+        }
+        public static List<Meal> GetMeals(string category)
+        {
+            var client = new RestClient("https://www.themealdb.com/api/json/v1/1/");
+            var requestList = new RestRequest($"filter.php?c={HttpUtility.UrlEncode(category)}");
+            var response = client.ExecuteAsync(requestList);
+            List<Meal> meals = new();
+            if (response.Result.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string gotResponse = response.Result.Content;
+                var deserialize = JsonConvert.DeserializeObject<Meals>(gotResponse);
+                meals = deserialize.MealsList;
+                return meals;
+            }
+            return meals;
         }
         public List<Meal> searchGeneral(string searchString)
         {

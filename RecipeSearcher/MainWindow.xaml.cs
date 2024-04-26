@@ -22,12 +22,18 @@ namespace RecipeSearcher
         public MainWindow()
         {
             InitializeComponent();
-            lvDataBinding.ItemsSource = FoodDB.GetCategories();
+            lvDataBindingCategories.ItemsSource = FoodDB.GetCategories();
         }
         private void CategoryClick(object sender, RoutedEventArgs e)
         {
             string category = ((Button)sender).Tag as String;
-            MessageBox.Show(category);
+            lvDataBindingMeals.ItemsSource = FoodDB.GetMeals(category);
+            lvDataBindingCategories.Visibility = Visibility.Hidden;
+            lvDataBindingMeals.Visibility = Visibility.Visible;
+        }
+        private void MealClick(object sender, RoutedEventArgs e)
+        {
+            string meal = ((Button)sender).Tag as String;
         }
     }
 }

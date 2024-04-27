@@ -26,14 +26,16 @@ namespace RecipeSearcher
         }
         private void CategoryClick(object sender, RoutedEventArgs e)
         {
-            string category = ((Button)sender).Tag as String;
+            string category = ((Border)sender).Tag as String;
             lvDataBindingMeals.ItemsSource = FoodDB.GetMeals(category);
             lvDataBindingCategories.Visibility = Visibility.Hidden;
             lvDataBindingMeals.Visibility = Visibility.Visible;
         }
-        private void MealClick(object sender, RoutedEventArgs e)
+        void MealClick(object sender, RoutedEventArgs e)
         {
-            string meal = ((Button)sender).Tag as String;
+            string meal = ((Border)sender).Tag as String;
+            DetailsWindow detailsWindow = new DetailsWindow(meal);
+            detailsWindow.Show();
         }
     }
 }

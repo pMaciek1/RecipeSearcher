@@ -44,6 +44,21 @@ namespace RecipeSearcher
             }
             return meals;
         }
+        public static List<Detail> GetMealDetails(string mealId)
+        {
+            var client = new RestClient("https://www.themealdb.com/api/json/v1/1/");
+            var requestList = new RestRequest($"lookup.php?i={HttpUtility.UrlEncode(mealId)}");
+            var response= client.ExecuteAsync(requestList);
+            List<Detail> details = new();
+            if(response.Result.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                string gotResponse = response.Result.Content;
+                var deserialize = JsonConvert.DeserializeObject<Details> (gotResponse);
+                details = deserialize.DetailsList;
+                return details;
+            }
+            return details;
+        }
         public List<Meal> searchGeneral(string searchString)
         {
             var client = new RestClient("https://www.themealdb.com/api/json/v1/1/");

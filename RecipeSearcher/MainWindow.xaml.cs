@@ -30,12 +30,19 @@ namespace RecipeSearcher
             lvDataBindingMeals.ItemsSource = FoodDB.GetMeals(category);
             lvDataBindingCategories.Visibility = Visibility.Hidden;
             lvDataBindingMeals.Visibility = Visibility.Visible;
+            backButton.Visibility = Visibility.Visible;
         }
         void MealClick(object sender, RoutedEventArgs e)
         {
             string meal = ((Border)sender).Tag as String;
             DetailsWindow detailsWindow = new DetailsWindow(meal);
             detailsWindow.Show();
+        }
+        private void BackClick(object sender, RoutedEventArgs e)
+        {
+            lvDataBindingCategories.Visibility = Visibility.Visible;
+            lvDataBindingMeals.Visibility = Visibility.Hidden;
+            backButton.Visibility = Visibility.Hidden;
         }
     }
 }

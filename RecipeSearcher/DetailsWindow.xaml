@@ -7,37 +7,111 @@
         mc:Ignorable="d"
         Name="gDataBindingDetails"
         Title="{Binding strMeal}" Height="800" Width="1440">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition  Width="1000"/>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.ColumnSpan="2" Background="Beige" BorderThickness="0,0,0,1" BorderBrush="Black"/>
-        <Label Grid.Row="1" Grid.Column="0" Background="AliceBlue" BorderThickness="0,1,1,0" BorderBrush="Black"/>
-        <Label Grid.Row="1" Grid.Column="1" Background="AntiqueWhite" BorderThickness="1,1,0,0" BorderBrush="Black"/>
-        <DockPanel>
-            <TextBlock Text="ID: "/>
-            <TextBlock Text="{Binding idMeal}" Grid.ColumnSpan="2" Grid.Row="0"/>
-        </DockPanel>
-        <TextBlock Text="{Binding strMeal}" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,10,0,0" Grid.ColumnSpan="2" Grid.Row="0"/>
-        <TextBlock Text="Instructions:" FontSize="15" Margin="5,40,0,0" Grid.ColumnSpan="2" Grid.Row="0"/>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition  Width="1000"/>
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" Grid.ColumnSpan="2" Background="#5C5470" BorderThickness="0,0,0,1" BorderBrush="Black"/>
+            <Label Grid.Row="1" Grid.Column="0" Background="#B9B4C7" BorderThickness="0,1,1,0" BorderBrush="Black"/>
+            <Label Grid.Row="1" Grid.Column="1" Background="#FAF0E6" BorderThickness="1,1,0,0" BorderBrush="Black"/>
+            <DockPanel>
+                <TextBlock Text="ID: "/>
+                <TextBlock Text="{Binding idMeal}" Grid.ColumnSpan="2" Grid.Row="0"/>
+            </DockPanel>
+            <TextBlock Text="{Binding strMeal}" HorizontalAlignment="Center" FontSize="30" FontWeight="Bold" Margin="0,10,0,0" Grid.ColumnSpan="2" Grid.Row="0" Foreground="AntiqueWhite"/>
+            <TextBlock Text="Instructions:" FontSize="15" Margin="5,40,0,0" Grid.ColumnSpan="2" Grid.Row="0" Foreground="AntiqueWhite"/>
 
-        <Grid Margin="5,60,5,40" Grid.ColumnSpan="2" Grid.Row="0">
-            <Border Background="#d1bf9b" BorderBrush="Black" CornerRadius="7" BorderThickness="3">
-                <TextBlock Text="{Binding strInstructions}" FontSize="15" TextWrapping="Wrap"/>
+            <Grid Margin="5,60,5,50" Grid.ColumnSpan="2" Grid.Row="0">
+                <Border Background="#352F44" BorderBrush="Black" CornerRadius="7" BorderThickness="2">
+                    <TextBlock Text="{Binding strInstructions}" FontSize="15" TextWrapping="Wrap" Foreground="AntiqueWhite"/>
+                </Border>
+            </Grid>
+            <DockPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,20,0,20">
+                <TextBlock Text="YouTube Link: " FontSize="18" Name="YoutubeText" Foreground="AntiqueWhite"/>
+                <TextBlock Text="{Binding strYoutube}" TextDecorations="Underline" Foreground="LightBlue" FontSize="18" Cursor="Hand" MouseDown="LinkClick" Loaded="YoutubeEvent"/>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="10,10,0,5">
+                <TextBlock Text="Tags: " FontSize="12" Name="TagsText" Foreground="AntiqueWhite"/>
+                <TextBlock Text="{Binding strTags}" FontSize="12" Foreground="AntiqueWhite" Loaded="TagsEvent"/>
+            </DockPanel>
+
+            <DockPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.Row="0" Margin="0,10,10,25">
+                <TextBlock Text="Category: " Foreground="AntiqueWhite"/>
+                <TextBlock Text="{Binding strCategory}" FontWeight="Bold" Foreground="AntiqueWhite"/>
+            </DockPanel>
+            <DockPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.Row="0" Margin="0,0,10,10">
+                <TextBlock Text="Origin: " Foreground="AntiqueWhite"/>
+                <TextBlock Text="{Binding strArea}" FontWeight="Bold" Foreground="AntiqueWhite"/>
+            </DockPanel>
+            <Border BorderThickness="2" BorderBrush="Black" CornerRadius="5" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Column="0" Grid.Row="1" Margin="10,20,10,10">
+                <Image Source="{Binding strMealThumb}" Width="300" Height="300"/>
             </Border>
+            
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,10,10,0" Text="{Binding strIngredient1}" FontSize="25" FontWeight="Bold" Name="Ing1" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,10,0,0" Text="{Binding strMeasure1}" FontSize="25" Name="Mea1" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,35,10,0" Text="{Binding strIngredient2}" FontSize="25" FontWeight="Bold" Name="Ing2" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,35,0,0" Text="{Binding strMeasure2}" FontSize="25" Name="Mea2" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,60,10,0" Text="{Binding strIngredient3}" FontSize="25" FontWeight="Bold" Name="Ing3" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,60,0,0" Text="{Binding strMeasure3}" FontSize="25" Name="Mea3" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,85,10,0" Text="{Binding strIngredient4}" FontSize="25" FontWeight="Bold" Name="Ing4" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,85,0,0" Text="{Binding strMeasure4}" FontSize="25" Name="Mea4" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,110,10,0" Text="{Binding strIngredient5}" FontSize="25" FontWeight="Bold" Name="Ing5" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,110,0,0" Text="{Binding strMeasure5}" FontSize="25" Name="Mea5" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,135,10,0" Text="{Binding strIngredient6}" FontSize="25" FontWeight="Bold" Name="Ing6" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,135,0,0" Text="{Binding strMeasure6}" FontSize="25" Name="Mea6" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,160,10,0" Text="{Binding strIngredient7}" FontSize="25" FontWeight="Bold" Name="Ing7" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,160,0,0" Text="{Binding strMeasure7}" FontSize="25" Name="Mea7" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,185,10,0" Text="{Binding strIngredient8}" FontSize="25" FontWeight="Bold" Name="Ing8" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,185,0,0" Text="{Binding strMeasure8}" FontSize="25" Name="Mea8" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,210,10,0" Text="{Binding strIngredient9}" FontSize="25" FontWeight="Bold" Name="Ing9" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,210,0,0" Text="{Binding strMeasure9}" FontSize="25" Name="Mea9" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,235,10,0" Text="{Binding strIngredient10}" FontSize="25" FontWeight="Bold" Name="Ing10" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,235,0,0" Text="{Binding strMeasure10}" FontSize="25" Name="Mea10" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,260,10,0" Text="{Binding strIngredient11}" FontSize="25" FontWeight="Bold" Name="Ing11" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,260,0,0" Text="{Binding strMeasure11}" FontSize="25" Name="Mea11" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,285,10,0" Text="{Binding strIngredient12}" FontSize="25" FontWeight="Bold" Name="Ing12" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,285,0,0" Text="{Binding strMeasure12}" FontSize="25" Name="Mea12" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,310,10,0" Text="{Binding strIngredient13}" FontSize="25" FontWeight="Bold" Name="Ing13" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,310,0,0" Text="{Binding strMeasure13}" FontSize="25" Name="Mea13" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,335,10,0" Text="{Binding strIngredient14}" FontSize="25" FontWeight="Bold" Name="Ing14" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,335,0,0" Text="{Binding strMeasure14}" FontSize="25" Name="Mea14" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,360,10,0" Text="{Binding strIngredient15}" FontSize="25" FontWeight="Bold" Name="Ing15" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,360,0,0" Text="{Binding strMeasure15}" FontSize="25" Name="Mea15" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,385,10,0" Text="{Binding strIngredient16}" FontSize="25" FontWeight="Bold" Name="Ing16" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,385,0,0" Text="{Binding strMeasure16}" FontSize="25" Name="Mea16" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,410,10,0" Text="{Binding strIngredient17}" FontSize="25" FontWeight="Bold" Name="Ing17" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,410,0,0" Text="{Binding strMeasure17}" FontSize="25" Name="Mea17" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,435,10,0" Text="{Binding strIngredient18}" FontSize="25" FontWeight="Bold" Name="Ing18" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,435,0,0" Text="{Binding strMeasure18}" FontSize="25" Name="Mea18" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,460,10,0" Text="{Binding strIngredient19}" FontSize="25" FontWeight="Bold" Name="Ing19" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,460,0,0" Text="{Binding strMeasure19}" FontSize="25" Name="Mea19" Loaded="LoadedEvent"/>
+
+            <TextBlock HorizontalAlignment="Right" Grid.Row="1" Grid.Column="0" Margin="0,485,10,0" Text="{Binding strIngredient20}" FontSize="25" Name="Ing20" Loaded="LoadedEvent"/>
+            <TextBlock HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1" Margin="10,485,0,0" Text="{Binding strMeasure20}" FontSize="25" Name="Mea20" Loaded="LoadedEvent"/>
         </Grid>
-        <DockPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.Row="0" Margin="0,10,10,25">
-            <TextBlock Text="Category: "/>
-            <TextBlock Text="{Binding strCategory}" FontWeight="Bold"/>
-        </DockPanel>
-        <DockPanel HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.ColumnSpan="2" Grid.Row="0" Margin="0,0,10,10">
-            <TextBlock Text="Origin: "/>
-            <TextBlock Text="{Binding strArea}" FontWeight="Bold"/>
-        </DockPanel>
-    </Grid>
+    </ScrollViewer>
 </Window>

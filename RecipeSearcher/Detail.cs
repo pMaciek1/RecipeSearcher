@@ -17,7 +17,7 @@ namespace RecipeSearcher
         public string strInstructions {  get; set; }
         public string strMealThumb { get; set; }
         public string strTags { get; set; }
-        public string strYoutbue { get; set; }
+        public string strYoutube { get; set; }
         public string strIngredient1 { get; set;}
         public string strIngredient2 { get; set; }
         public string strIngredient3 { get; set; }

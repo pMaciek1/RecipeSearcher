@@ -7,19 +7,19 @@
         mc:Ignorable="d"
         Title="Very cool recipe searcher" Height="800" Width="1440">
     <Grid Background="AliceBlue">
-        <ListView Margin="10" Name="lvDataBindingCategories" Background="AliceBlue" BorderThickness="0">
+        <ListView Margin="10" Name="lvDataBindingCategories" Background="#352F44" BorderThickness="0">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                <Border Name="Border" BorderBrush="Black" BorderThickness="2" CornerRadius="10" Background="LightGray" Margin="10" MouseDown="CategoryClick" Tag="{Binding strCategory}">
+                                <Border Name="Border" BorderBrush="Black" BorderThickness="2" CornerRadius="10" Background="#B9B4C7" Margin="10" MouseDown="CategoryClick" Tag="{Binding strCategory}">
                                     <ContentPresenter Margin="5" />
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="Border" Property="Background" Value="#a7c4d1"/>
+                                        <Setter TargetName="Border" Property="Background" Value="#FAF0E6"/>
                                         <Setter Property="Cursor" Value="Hand"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>
@@ -40,19 +40,20 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView Margin="10" Name="lvDataBindingMeals" Visibility="Hidden" Background="AliceBlue" BorderThickness="0">
+        <Button Content="Go back" Click="BackClick" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Name="backButton"/>
+        <ListView Margin="10,50,10,10" Name="lvDataBindingMeals" Visibility="Hidden" Background="#352F44" BorderThickness="0">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                <Border Name="Border" BorderBrush="Black" BorderThickness="2" CornerRadius="10" Background="LightGray" Margin="10" MouseDown="MealClick" Tag="{Binding idMeal}">
+                                <Border Name="Border" BorderBrush="Black" BorderThickness="2" CornerRadius="10" Background="#B9B4C7" Margin="10" MouseDown="MealClick" Tag="{Binding idMeal}">
                                     <ContentPresenter Margin="5" />
                                 </Border>
                                 <ControlTemplate.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="Border" Property="Background" Value="#a7c4d1"/>
+                                        <Setter TargetName="Border" Property="Background" Value="#FAF0E6"/>
                                         <Setter Property="Cursor" Value="Hand"/>
                                     </Trigger>
                                 </ControlTemplate.Triggers>

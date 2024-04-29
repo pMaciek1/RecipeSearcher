@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RecipeSearcher"
         mc:Ignorable="d"
+        Icon="/Assets/icon.ico"
         Name="gDataBindingDetails"
         Title="{Binding strMeal}" Height="800" Width="1440">
     <ScrollViewer HorizontalScrollBarVisibility="Disabled">

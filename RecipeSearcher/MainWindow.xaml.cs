@@ -22,27 +22,26 @@ namespace RecipeSearcher
         public MainWindow()
         {
             InitializeComponent();
-            lvDataBindingCategories.ItemsSource = FoodDB.GetCategories();
         }
-        private void CategoryClick(object sender, RoutedEventArgs e)
+        void RandomClick(object sender, RoutedEventArgs e)
         {
-            string category = ((Border)sender).Tag as String;
-            lvDataBindingMeals.ItemsSource = FoodDB.GetMeals(category);
-            lvDataBindingCategories.Visibility = Visibility.Hidden;
-            lvDataBindingMeals.Visibility = Visibility.Visible;
-            backButton.Visibility = Visibility.Visible;
-        }
-        void MealClick(object sender, RoutedEventArgs e)
-        {
-            string meal = ((Border)sender).Tag as String;
-            DetailsWindow detailsWindow = new DetailsWindow(meal);
+            DetailsWindow detailsWindow = new DetailsWindow(FoodDB.RandomMeal());
             detailsWindow.Show();
         }
-        private void BackClick(object sender, RoutedEventArgs e)
+        void GetCountriesClick(object sender, RoutedEventArgs e)
         {
-            lvDataBindingCategories.Visibility = Visibility.Visible;
-            lvDataBindingMeals.Visibility = Visibility.Hidden;
-            backButton.Visibility = Visibility.Hidden;
+            CountriesWindow countriesWindow = new CountriesWindow();
+            countriesWindow.Show();
+        }
+        void GetCategoriesClick(object sender, RoutedEventArgs e)
+        {
+            CategoriesWindow categoriesWindow = new CategoriesWindow();
+            categoriesWindow.Show();
+        }
+        void GetSearchClick(object sender, RoutedEventArgs e)
+        {
+            SearchWindow searchWindow = new SearchWindow();
+            searchWindow.Show();
         }
     }
 }

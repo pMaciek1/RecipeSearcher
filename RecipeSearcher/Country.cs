@@ -7,13 +7,14 @@ using Newtonsoft.Json;
 
 namespace RecipeSearcher
 {
-    public class Category
+    public class Country
     {
-        public string strCategory {  get; set; }
+        public string strArea { get; set; }
     }
-    public class Categories
+    public class Countries
     {
         [JsonProperty("meals")]
-        public List<Category> CategoriesList { get; set; }
+        public List<Country> CountryList {  get; set; }
+
     }
 }

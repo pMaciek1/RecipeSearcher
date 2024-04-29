@@ -5,16 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RecipeSearcher"
         mc:Ignorable="d"
+        Icon="/Assets/icon.ico"
         Title="Very cool recipe searcher" Height="800" Width="1440">
-    <Grid Background="AliceBlue">
-        <ListView Margin="10" Name="lvDataBindingCategories" Background="#352F44" BorderThickness="0">
+    <Grid Background="#352F44">
+        <TextBlock Text="Awesome meal recipe searcher" HorizontalAlignment="Center" FontSize="40" Margin="10" FontWeight="ExtraBold" Foreground="AntiqueWhite"/>
+        <ListView Background="#352F44" Margin="0,60,0,0" BorderThickness="0">
             <ListView.ItemContainerStyle>
                 <Style TargetType="{x:Type ListViewItem}">
                     <Setter Property="Background" Value="Transparent" />
                     <Setter Property="Template">
                         <Setter.Value>
                             <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                <Border Name="Border" BorderBrush="Black" BorderThickness="2" CornerRadius="10" Background="#B9B4C7" Margin="10" MouseDown="CategoryClick" Tag="{Binding strCategory}">
+                                <Border Name="Border" BorderBrush="Black" BorderThickness="2" CornerRadius="10" Background="#B9B4C7" Margin="10">
                                     <ContentPresenter Margin="5" />
                                 </Border>
                                 <ControlTemplate.Triggers>
@@ -28,57 +30,19 @@
                     </Setter>
                 </Style>
             </ListView.ItemContainerStyle>
-
-
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <WrapPanel>
-                        <TextBlock Text="{Binding idCategory}" FontSize="25"/>
-                        <TextBlock Text=". " FontSize="25"/>
-                        <TextBlock Text="{Binding strCategory}" FontWeight="Bold" FontSize="25"/>
-                    </WrapPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
+            <ListViewItem>
+                <TextBlock Text="Filter by search" FontSize="30" FontWeight="Bold" MouseDown="GetSearchClick"/>
+            </ListViewItem>
+            <ListViewItem>
+                <TextBlock Text="Filter by category" FontSize="30" FontWeight="Bold" MouseDown="GetCategoriesClick"/>
+            </ListViewItem>
+            <ListViewItem>
+                <TextBlock Text="Filter by country of origin" FontSize="30" FontWeight="Bold" MouseDown="GetCountriesClick"/>
+            </ListViewItem>
+            <ListViewItem >
+                <TextBlock Text="Random meal" FontSize="30" FontWeight="Bold" MouseDown="RandomClick" />
+            </ListViewItem>
         </ListView>
-        <Button Content="Go back" Click="BackClick" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Name="backButton"/>
-        <ListView Margin="10,50,10,10" Name="lvDataBindingMeals" Visibility="Hidden" Background="#352F44" BorderThickness="0">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="{x:Type ListViewItem}">
-                    <Setter Property="Background" Value="Transparent" />
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListViewItem}">
-                                <Border Name="Border" BorderBrush="Black" BorderThickness="2" CornerRadius="10" Background="#B9B4C7" Margin="10" MouseDown="MealClick" Tag="{Binding idMeal}">
-                                    <ContentPresenter Margin="5" />
-                                </Border>
-                                <ControlTemplate.Triggers>
-                                    <Trigger Property="IsMouseOver" Value="True">
-                                        <Setter TargetName="Border" Property="Background" Value="#FAF0E6"/>
-                                        <Setter Property="Cursor" Value="Hand"/>
-                                    </Trigger>
-                                </ControlTemplate.Triggers>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <DockPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="{Binding idMeal}" FontSize="25" VerticalAlignment="Center"/>
-                            <TextBlock Text=". " FontSize="25" VerticalAlignment="Center"/>
-                            <TextBlock Text="{Binding strMeal}" FontWeight="Bold" FontSize="25" VerticalAlignment="Center"/>
-                            <Border BorderThickness="2" BorderBrush="Black" CornerRadius="5" Margin="10,5,10,5">
-                                <Image Source="{Binding strMealThumb}" Width="150" />
-                            </Border>
-                        </StackPanel>
-                    </DockPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-        
     </Grid>
-    
 </Window>
 
